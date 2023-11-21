@@ -21,3 +21,37 @@ cd lms-frontend-hn
 ``````
 yarn dev
 ``````
+
+
+###Setup instructions for tailwind
+
+[Tailwind official instruction doc](https://tailwindcss.com/docs/guides/vite)
+
+1.Install Tailwind 
+``````
+npx tailwindcss init -p
+``````
+2.Configure your template paths
+``````
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+``````
+3.Add the tailwind directive to your CSS
+``````
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+``````
+4.Run the server
+``````
+yarn run dev
+``````
