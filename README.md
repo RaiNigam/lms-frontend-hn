@@ -55,3 +55,7 @@ export default {
 ``````
 yarn run dev
 ``````
+#Adding Plugins and Dependencies
+``````
+yarn add @reduxjs/toolkit react-redux react-router-dom react-icons react-chartjs-2 chart.js daisyui axios react-hot-toast @tailwindcss/line-clamp
+``````
