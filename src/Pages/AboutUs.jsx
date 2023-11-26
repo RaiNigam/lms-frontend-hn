@@ -4,9 +4,7 @@ import celebrities from "../Constants/CelebrityData";
 import CarouselSlide from "../Components/CarouselSlide";
 
 function AboutUs() {
-    
   return (
-  
     <HomeLayout>
       <div className="pl-20 pt-20 flex flex-col text-white">
         <div className="flex items-center gap-5 mx-10">
@@ -25,7 +23,7 @@ function AboutUs() {
             <img
               id="test1"
               style={{
-                filter: "drop-shadow(0px 10px 10px rgb(0,0,0))"
+                filter: "drop-shadow(0px 10px 10px rgb(0,0,0))",
               }}
               alt="About Main Image"
               className="drop-shadow-2xl"
@@ -34,9 +32,13 @@ function AboutUs() {
           </div>
         </div>
         <div className="carousel m-auto w-1/2 my-16">
-           {celebrities.map((celeb)=>
-            <CarouselSlide  {...celeb} key={celeb.slideNumber} totalSlides={celebrities.length} />
-           )}
+          {celebrities.map((celeb) => (
+            <CarouselSlide
+              {...celeb}
+              key={celeb.slideNumber}
+              totalSlides={celebrities.length}
+            />
+          ))}
         </div>
       </div>
     </HomeLayout>
