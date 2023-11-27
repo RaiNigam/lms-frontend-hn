@@ -3,6 +3,7 @@ import {FiMenu} from 'react-icons/fi';
 import {AiFillCloseCircle} from 'react-icons/ai';
 import Footer from '../Components/Footer';
 import {useDispatch, useSelector} from 'react-redux'
+import { logout } from '../redux/slices/authSlice';
 function HomeLayout({children}) {
   const dispatch=useDispatch();
   const navigate=useNavigate();
@@ -25,6 +26,8 @@ function HomeLayout({children}) {
   }
   function handleLogout(e){
     e.preventDefault();
+    const res=dispatch(logout());
+    if(res?.payload?.success)
     navigate('/');
   }
   return (
