@@ -8,7 +8,7 @@ function HomePage() {
             <div className="w-1/2 space-y-6">
                 <h1 className="text-5xl font-semibold">
                     Find out best 
-                    <span className="text-yellow-500 font-bold">
+                    <span className="text-yellow-500 font-bold ml-2">
                         Online Courses    
                     </span> 
                 </h1>

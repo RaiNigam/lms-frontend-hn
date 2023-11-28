@@ -20,9 +20,7 @@ function HomeLayout({children}) {
     const element=document.getElementsByClassName('drawer-toggle');
     element[0].checked=false;
     const drawerSide=document.querySelector('.drawer-side');
-  
     drawerSide[0].style.width=0;
-
   }
   function handleLogout(e){
     e.preventDefault();
