@@ -49,9 +49,7 @@ return (
             </p>
             <p>{state?.description}</p>
           </div>
-        </div>
-
-        
+        </div>        
     </div>
   </HomeLayout>
 )
