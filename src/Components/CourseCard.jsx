@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 function CourseCard({data}) {
     const navigate=useNavigate();
   return (
-    <div className="flex flex-col gap-4 py-2 px-3  text-white group h-[430px] shadow-lg rounded-lg cursor-pointer overflow-hidden bg-zinc-700 w-[22rem]">
+    <div onClick={()=>navigate('/course/description',{state:{...data}})}className="flex flex-col gap-4 py-2 px-3  text-white group h-[430px] shadow-lg rounded-lg cursor-pointer overflow-hidden bg-zinc-700 w-[22rem]">
         <div className="overflow-hidden">
             <img className="w-full h-48 rounded-tl-lg rounded-tr-lg group-hover:scale=[1,2] transition-all ease-in-out duration-300" src={data?.thumbnail?.secure_url} alt="Course thumbnail"/>
         </div>
