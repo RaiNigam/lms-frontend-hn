@@ -22,14 +22,15 @@ export const addCourseLecture=createAsyncThunk('course/lecture/add',async(data)=
         const formData=new FormData();
         formData.append("lecture",data?.lecture);
         formData.append("title",data.title);
-        formData.append("Description",data.description);
+        formData.append("description",data.description);
     
         const response=axiosInstance.post(`course/${data.id}`,formData);
         toast.promise(response,{
-            loading:'Add the lectures.....',
+            loading:'Adding the lecture.....',
             success:"Lecture Added Succesfully",
             error:"Failed to add lecture"
         })
+        return (await response).data;
     }catch(error){
         toast.error(error?.response?.data?.message);
     }
@@ -58,7 +59,7 @@ const lectureSlice=createSlice({
     extraReducers:(builder)=>{
         builder
         .addCase(addCourseLecture.fulfilled,(state,action)=>{
-            console.log(action?.payload)
+            console.log(action?.payload?.course?.lectures)
             state.lectures=action?.payload?.course?.lectures
         })
         .addCase(getCourseLecture.fulfilled,(state,action)=>{

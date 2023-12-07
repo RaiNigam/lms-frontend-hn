@@ -10,17 +10,18 @@ function DisplayLectures(){
     const {lectures}=useSelector((state)=>state.lecture);
     const {role}=useSelector((state)=>state.auth);
     const [currentVideoIndex,setCurrentVideoIndex]=useState(0);
-    async function handleLectureDelete(courseId,lectureId){
-        console.log(courseId,lectureId);
+   
+      const handleLectureDelete=async(courseId,lectureId)=>{
         const data={courseId,lectureId};
-        await dispatch(deleteCourseLecture(data));
         await dispatch(getCourseLecture(courseId));
+        await dispatch(deleteCourseLecture(data));
+       
     }
     useEffect(()=>{    
         if(!state) navigate('/courses');
         
     
-             dispatch(getCourseLecture(state._id));
+            dispatch(getCourseLecture(state._id));
         
     },[])
     return (<HomeLayout>
@@ -28,7 +29,7 @@ function DisplayLectures(){
                     <h1 className="text-2xl text-yellow-500 text-center font-semibold">
                             Course Name:{state?.title}
                      </h1>
-                  {lectures&&lectures.length>0&&(
+                  {lectures&&lectures.length>0?(
    <div className="flex justify-center gap-10 w-full">
    <div className="space-y-5 w-[28rem] p-2 rounded-lg shadow-[0_0_10px_black]">
        <video
@@ -82,6 +83,13 @@ function DisplayLectures(){
    </ul>
 </div>
                   
+                    ):(
+                        role==='ADMIN'&&
+       (
+           <button onClick={()=>navigate('/course/addlecture',{state:{...state}})}className='btn btn-primary px-2 py-1 rounded-md font-semibold text-sm'>
+               Add New Lecture
+           </button>
+       )
                     )
 
                   }
