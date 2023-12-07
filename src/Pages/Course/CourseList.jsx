@@ -4,13 +4,13 @@ import { useEffect } from 'react';
 import HomeLayout from '../../HomeLayout/HomeLayout';
 import CourseCard from '../../Components/CourseCard';
 function CourseList() {
+  
     const dispatch=useDispatch();
     const {courseData}=useSelector((state)=>state.course);
   async function loadCourses(){
         await dispatch(getAllCourses());
     }
     useEffect(()=>{
-      console.log(courseData);
         loadCourses();
     },[]);
   return (
@@ -19,7 +19,7 @@ function CourseList() {
       <h1 className='text-center text-2xl font-bold'>Explore All the courses by <span className="text-yellow-500 text-bold ml-1">Industry experts.</span></h1>
      <div className="mb-10 flex gap-14 flex-wrap ">
       {courseData?.map((course)=>{
-        return <CourseCard data={course} key={course.id}/>
+        return <CourseCard data={course} key={course._id}/>
       })}
      </div>
       </div>

@@ -52,7 +52,7 @@ function Signup() {
         toast.error("Invalid email");
         return;
     }
-    if(!signupData.password){
+    if(!signupData.password.match(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)){
         toast.error("Password must have around 6 to 16 characters with atleast one number and a special character");
         return;
     }
@@ -64,7 +64,7 @@ function Signup() {
     const response=await dispatch(createAccount(formData));
  
     if(response?.payload?.success){
-        navigate('/')
+        
     
  
     setSignupData({
@@ -74,6 +74,7 @@ function Signup() {
         avatar: "",
     })
     setPreviewImage("");
+    navigate('/');
     }
   }
   return (

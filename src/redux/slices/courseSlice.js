@@ -13,7 +13,6 @@ const courseSlice=createSlice({
         builder
         .addCase(getAllCourses.fulfilled,(state,action)=>{
             if(action.payload){
-                console.log(action.payload)
                 state.courseData=[...action.payload]
             }
         })
@@ -31,6 +30,28 @@ export const getAllCourses=createAsyncThunk('/course/get',async()=>{
     }catch(error){
         toast.error(error?.response?.data?.message);
     }
+})
+export const createCourse=createAsyncThunk('/course/create',async(data)=>{
+    try{
+        let formData=new FormData();
+        formData.append("title",data?.title);
+        formData.append("description",data?.description);
+        formData.append("category",data?.category);
+        formData.append("createdBy",data?.createdBy);
+        formData.append("thumbnail",data?.thumbnail);
+        console.log("Hello");
+        const response=axiosInstance.post('/course',formData);
+        console.log(response);
+        toast.promise(response,{
+            loading:"Waiting to create course",
+            success:"Succesfully created course",
+            error:"Failed to create course"
+        })
+        return (await response).data;
+    }catch(error){
+        toast.error(error?.response?.data?.message);
+    }
+   
 })
 
 export default courseSlice.reducer

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import HomeLayout from "../../HomeLayout/HomeLayout";
 
 function CourseDescription(){
     const {state}=useLocation();
     const {role,data}=useSelector((state)=>state.auth);
+    const navigate=useNavigate();
     useEffect(()=>{
 
     },[])
@@ -29,12 +30,11 @@ return (
                     </p>
                 </div>
             </div>
-            {
-                role==='ADMIN'||data?.subcription?.status==='ACTIVE'?
-                (<button className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-5 font-bold rounded-sm w-full text-xl">
+            {role==='ADMIN'||data?.subcription?.status==='active'?
+                (<button onClick={()=>navigate('/course/displayLectures',{state:{...state}})} className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-5 font-bold rounded-sm w-full text-xl">
                     Watch Course
                 </button>):(
-                 <button className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-5 font-bold rounded-sm w-full text-xl">
+                 <button onClick={()=>navigate('/course/displayLectures',{state:{...state}})} className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-5 font-bold rounded-sm w-full text-xl">
                  Subscribe
              </button>
                 )

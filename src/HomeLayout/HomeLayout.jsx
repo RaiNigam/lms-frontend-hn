@@ -13,7 +13,7 @@ function HomeLayout({children}) {
   const role=useSelector((state)=>state?.auth?.role);
   function changeWidth(){
     const drawerSide=document.getElementsByClassName('drawer-side');
-    console.log(drawerSide);
+  
     drawerSide[0].style.width='auto';
   }
   function hideDrawer(){
